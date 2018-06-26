@@ -42,6 +42,11 @@ public class WSForm extends javax.swing.JFrame {
         jClearSelectb = new javax.swing.JButton();
         jStartb = new javax.swing.JButton();
         jExitButton = new javax.swing.JButton();
+        jPic = new javax.swing.JLabel();
+        jStatusLabel = new javax.swing.JLabel();
+        jSelectLog = new javax.swing.JButton();
+        jClearStatusButton = new javax.swing.JButton();
+        scrollPane1 = new java.awt.ScrollPane();
         jRxsPanel = new javax.swing.JPanel();
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
@@ -112,6 +117,19 @@ public class WSForm extends javax.swing.JFrame {
 
         jExitButton.setText("Close");
 
+        jPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WS/SEC2.png"))); // NOI18N
+        jPic.setText("jLabel1");
+
+        jStatusLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jStatusLabel.setText("Status: ");
+
+        jSelectLog.setText("Select Log File");
+
+        jClearStatusButton.setText("Clear Status Window");
+
+        scrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+        scrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jJpesPanelLayout = new javax.swing.GroupLayout(jJpesPanel);
         jJpesPanel.setLayout(jJpesPanelLayout);
         jJpesPanelLayout.setHorizontalGroup(
@@ -120,42 +138,65 @@ public class WSForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jJpesPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jInitialButton)
-                        .addGap(33, 33, 33)
-                        .addComponent(jMaintenanceButton))
-                    .addComponent(jModeLable)
-                    .addComponent(jReferenceLabel)
-                    .addGroup(jJpesPanelLayout.createSequentialGroup()
-                        .addComponent(jClearSelectb)
-                        .addGap(30, 30, 30)
-                        .addComponent(jStartb))
-                    .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(453, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jExitButton)
+                        .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jInitialButton)
+                                .addGap(33, 33, 33)
+                                .addComponent(jMaintenanceButton))
+                            .addComponent(jModeLable)
+                            .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                .addComponent(jClearSelectb)
+                                .addGap(30, 30, 30)
+                                .addComponent(jStartb))
+                            .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jReferenceLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jSelectLog)
+                        .addGap(75, 75, 75)
+                        .addComponent(jClearStatusButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jExitButton)))
                 .addContainerGap())
+            .addGroup(jJpesPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jStatusLabel)
+                    .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         jJpesPanelLayout.setVerticalGroup(
             jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jJpesPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jModeLable)
+                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPic)
+                    .addGroup(jJpesPanelLayout.createSequentialGroup()
+                        .addComponent(jModeLable)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jInitialButton)
+                            .addComponent(jMaintenanceButton))
+                        .addGap(31, 31, 31)
+                        .addComponent(jReferenceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jClearSelectb)
+                            .addComponent(jStartb))
+                        .addGap(41, 41, 41)
+                        .addComponent(jStatusLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jInitialButton)
-                    .addComponent(jMaintenanceButton))
-                .addGap(22, 22, 22)
-                .addComponent(jReferenceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jClearSelectb)
-                    .addComponent(jStartb))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jExitButton)
+                    .addComponent(jExitButton)
+                    .addComponent(jSelectLog)
+                    .addComponent(jClearStatusButton))
                 .addContainerGap())
         );
 
@@ -165,11 +206,11 @@ public class WSForm extends javax.swing.JFrame {
         jRxsPanel.setLayout(jRxsPanelLayout);
         jRxsPanelLayout.setHorizontalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
+            .addGap(0, 703, Short.MAX_VALUE)
         );
         jRxsPanelLayout.setVerticalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGap(0, 533, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("RXS 2.0", jRxsPanel);
@@ -178,11 +219,11 @@ public class WSForm extends javax.swing.JFrame {
         jGfmdiPanel.setLayout(jGfmdiPanelLayout);
         jGfmdiPanelLayout.setHorizontalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
+            .addGap(0, 703, Short.MAX_VALUE)
         );
         jGfmdiPanelLayout.setVerticalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGap(0, 533, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("GFM-DI", jGfmdiPanel);
@@ -191,27 +232,16 @@ public class WSForm extends javax.swing.JFrame {
         jDmdcPanel.setLayout(jDmdcPanelLayout);
         jDmdcPanelLayout.setHorizontalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
+            .addGap(0, 703, Short.MAX_VALUE)
         );
         jDmdcPanelLayout.setVerticalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGap(0, 533, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("DMDC", jDmdcPanel);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1))
-        );
+        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,6 +321,7 @@ public class WSForm extends javax.swing.JFrame {
     private javax.swing.ButtonGroup ModeGroup;
     private javax.swing.JList<String> RefList;
     private javax.swing.JButton jClearSelectb;
+    private javax.swing.JButton jClearStatusButton;
     private javax.swing.JPanel jDmdcPanel;
     private javax.swing.JButton jExitButton;
     private javax.swing.JPanel jGfmdiPanel;
@@ -299,10 +330,14 @@ public class WSForm extends javax.swing.JFrame {
     private javax.swing.JDialog jMaintDialog;
     private javax.swing.JRadioButton jMaintenanceButton;
     private javax.swing.JLabel jModeLable;
+    private javax.swing.JLabel jPic;
     private javax.swing.JScrollPane jRefScrollPane;
     private javax.swing.JLabel jReferenceLabel;
     private javax.swing.JPanel jRxsPanel;
+    private javax.swing.JButton jSelectLog;
     private javax.swing.JButton jStartb;
+    private javax.swing.JLabel jStatusLabel;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
 }
