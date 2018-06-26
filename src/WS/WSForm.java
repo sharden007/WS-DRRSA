@@ -30,6 +30,7 @@ public class WSForm extends javax.swing.JFrame {
     private void initComponents() {
 
         ModeGroup = new javax.swing.ButtonGroup();
+        jMaintDialog = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jJpesPanel = new javax.swing.JPanel();
         jModeLable = new javax.swing.JLabel();
@@ -45,6 +46,17 @@ public class WSForm extends javax.swing.JFrame {
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
 
+        javax.swing.GroupLayout jMaintDialogLayout = new javax.swing.GroupLayout(jMaintDialog.getContentPane());
+        jMaintDialog.getContentPane().setLayout(jMaintDialogLayout);
+        jMaintDialogLayout.setHorizontalGroup(
+            jMaintDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jMaintDialogLayout.setVerticalGroup(
+            jMaintDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DRRS-A Web Services");
 
@@ -53,6 +65,7 @@ public class WSForm extends javax.swing.JFrame {
 
         ModeGroup.add(jInitialButton);
         jInitialButton.setText("Intial/Baseline");
+        jInitialButton.setToolTipText("This selection retrieves all the reference data items.");
         jInitialButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jInitialButtonActionPerformed(evt);
@@ -61,6 +74,7 @@ public class WSForm extends javax.swing.JFrame {
 
         ModeGroup.add(jMaintenanceButton);
         jMaintenanceButton.setText("Maintenance");
+        jMaintenanceButton.setToolTipText("This selection retrieves only the selected data items.");
         jMaintenanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMaintenanceButtonActionPerformed(evt);
@@ -71,6 +85,11 @@ public class WSForm extends javax.swing.JFrame {
             String[] strings = { "CargoExtent", "CargoType", "Cin", "Component", "CountryCode", "FmToCinLink", "FmToPinLink", "Geolocation", "Means", "Mod", "ModeSource", "PidComposite", "Pid", "Pin", "SeriesPermission", "Service", "Source", "Split", "StopType", "TuchaCargo3", "TuchaCargo4", "Tucha", "Tudet", "ULNTucha", "UnitLevel", "UnitTypeRecord" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        RefList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefListMouseClicked(evt);
+            }
         });
         jRefScrollPane.setViewportView(RefList);
 
@@ -199,21 +218,38 @@ public class WSForm extends javax.swing.JFrame {
 
     private void jInitialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInitialButtonActionPerformed
         RefList.setEnabled(false);
-        RefList.setBackground(Color.WHITE);
+       
+        //RefList.setBackground(Color.WHITE);
+        
+        int start = 0;
+        int end = RefList.getModel().getSize() - 1;
+         if (end >= 0) {
+           RefList.setSelectionInterval(start, end);
     }//GEN-LAST:event_jInitialButtonActionPerformed
-
+    }
     private void jMaintenanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaintenanceButtonActionPerformed
         RefList.setEnabled(true);
-        RefList.setBackground(Color.GREEN);
+        //RefList.setBackground(Color.GREEN);
+        jMaintDialog.setVisible(true);
+        jMaintDialog.setTitle("Maintenance Mode Selected...");
     }//GEN-LAST:event_jMaintenanceButtonActionPerformed
 
     private void jClearSelectbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearSelectbActionPerformed
-       RefList.clearSelection();
+      RefList.clearSelection();
+      
+       //jMaintenanceButton.setSelected(false); not working???
+      //jInitialButton.setSelected(false); not working???
+       
     }//GEN-LAST:event_jClearSelectbActionPerformed
 
     private void jStartbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartbActionPerformed
         RefList.setEnabled(false); 
     }//GEN-LAST:event_jStartbActionPerformed
+
+    private void RefListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefListMouseClicked
+        jMaintenanceButton.setSelected(true);
+        RefList.setBackground(Color.GREEN);
+    }//GEN-LAST:event_RefListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -260,6 +296,7 @@ public class WSForm extends javax.swing.JFrame {
     private javax.swing.JPanel jGfmdiPanel;
     private javax.swing.JRadioButton jInitialButton;
     private javax.swing.JPanel jJpesPanel;
+    private javax.swing.JDialog jMaintDialog;
     private javax.swing.JRadioButton jMaintenanceButton;
     private javax.swing.JLabel jModeLable;
     private javax.swing.JScrollPane jRefScrollPane;
