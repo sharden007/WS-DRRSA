@@ -5,6 +5,8 @@
  */
 package WS;
 
+import java.awt.Color;
+
 /**
  *
  * @author shawn.harden
@@ -51,9 +53,19 @@ public class WSForm extends javax.swing.JFrame {
 
         ModeGroup.add(jInitialButton);
         jInitialButton.setText("Intial/Baseline");
+        jInitialButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInitialButtonActionPerformed(evt);
+            }
+        });
 
         ModeGroup.add(jMaintenanceButton);
         jMaintenanceButton.setText("Maintenance");
+        jMaintenanceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMaintenanceButtonActionPerformed(evt);
+            }
+        });
 
         RefList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "CargoExtent", "CargoType", "Cin", "Component", "CountryCode", "FmToCinLink", "FmToPinLink", "Geolocation", "Means", "Mod", "ModeSource", "PidComposite", "Pid", "Pin", "SeriesPermission", "Service", "Source", "Split", "StopType", "TuchaCargo3", "TuchaCargo4", "Tucha", "Tudet", "ULNTucha", "UnitLevel", "UnitTypeRecord" };
@@ -66,8 +78,18 @@ public class WSForm extends javax.swing.JFrame {
         jReferenceLabel.setText("Reference Data:");
 
         jClearSelectb.setText("Clear Selection");
+        jClearSelectb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClearSelectbActionPerformed(evt);
+            }
+        });
 
         jStartb.setText("Start");
+        jStartb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jStartbActionPerformed(evt);
+            }
+        });
 
         jExitButton.setText("Close");
 
@@ -174,6 +196,24 @@ public class WSForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jInitialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInitialButtonActionPerformed
+        RefList.setEnabled(false);
+        RefList.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jInitialButtonActionPerformed
+
+    private void jMaintenanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaintenanceButtonActionPerformed
+        RefList.setEnabled(true);
+        RefList.setBackground(Color.GREEN);
+    }//GEN-LAST:event_jMaintenanceButtonActionPerformed
+
+    private void jClearSelectbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearSelectbActionPerformed
+       RefList.clearSelection();
+    }//GEN-LAST:event_jClearSelectbActionPerformed
+
+    private void jStartbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartbActionPerformed
+        RefList.setEnabled(false); 
+    }//GEN-LAST:event_jStartbActionPerformed
 
     /**
      * @param args the command line arguments
