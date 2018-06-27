@@ -10,7 +10,7 @@ package WS;
  * @author shawn.harden
  */
 public class WSMainPanel extends javax.swing.JPanel {
-
+     
     /**
      * Creates new form WSMainPanel
      */
