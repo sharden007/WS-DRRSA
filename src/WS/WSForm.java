@@ -10,19 +10,23 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.io.OutputStream;
 import java.util.Date;
+
 
 /**
  *
  * @author shawn.harden
  */
 public class WSForm extends javax.swing.JFrame {
-
+private PrintStream standardOut;
+           
     /**
      * Creates new form DVLForm
      */
     public WSForm() {
         initComponents();
+        
     }
 
     /**
@@ -51,8 +55,8 @@ public class WSForm extends javax.swing.JFrame {
         jStatusLabel = new javax.swing.JLabel();
         jSelectLog = new javax.swing.JButton();
         jClearStatusButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea = new javax.swing.JTextArea();
         jRxsPanel = new javax.swing.JPanel();
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
@@ -138,10 +142,9 @@ public class WSForm extends javax.swing.JFrame {
             }
         });
 
-        jTextPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextPane1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane1.setViewportView(jTextPane1);
+        jTextArea.setColumns(20);
+        jTextArea.setRows(5);
+        jScrollPane2.setViewportView(jTextArea);
 
         javax.swing.GroupLayout jJpesPanelLayout = new javax.swing.GroupLayout(jJpesPanel);
         jJpesPanel.setLayout(jJpesPanelLayout);
@@ -166,9 +169,9 @@ public class WSForm extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(jSelectLog)
-                                .addGap(75, 75, 75)
+                                .addGap(150, 150, 150)
                                 .addComponent(jClearStatusButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jExitButton))
                             .addGroup(jJpesPanelLayout.createSequentialGroup()
                                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,13 +180,15 @@ public class WSForm extends javax.swing.JFrame {
                                         .addGap(30, 30, 30)
                                         .addComponent(jStartb))
                                     .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jJpesPanelLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jStatusLabel)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jStatusLabel))
+                        .addGap(0, 130, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jJpesPanelLayout.setVerticalGroup(
@@ -208,9 +213,9 @@ public class WSForm extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addComponent(jStatusLabel))
                     .addComponent(jPic))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jExitButton)
                     .addComponent(jSelectLog)
@@ -297,12 +302,12 @@ public class WSForm extends javax.swing.JFrame {
             java.awt.Desktop.getDesktop().browse(uri);   
         }
         catch (IOException e) {
-            jTextPane1.setForeground(Color.red);
+            jTextArea.setForeground(Color.red);
         }
         catch (URISyntaxException e){
         }
         
-         jTextPane1.setText("\nRequest for reference data sent...\n");
+         jTextArea.setText("\nRequest for reference data sent...\n");
     }//GEN-LAST:event_jStartbActionPerformed
 
     private void RefListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefListMouseClicked
@@ -312,15 +317,21 @@ public class WSForm extends javax.swing.JFrame {
 
     private void jClearStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearStatusButtonActionPerformed
         // TODO add your handling code here:
-        jTextPane1.setText("");
+        jTextArea.setText("");
     }//GEN-LAST:event_jClearStatusButtonActionPerformed
 
     
      private void printLog() {
+         
         Thread thread = new Thread(new Runnable() {
+          // private PrintStream standardOut;
+   
             @Override
             public void run() {
                 while (true) {
+                    jTextArea.setText(standardOut);
+              //      System.setOut(printStream);
+              
                     System.out.println("Time now is " + (new Date()));
                     try {
                         Thread.sleep(1000);
@@ -358,26 +369,14 @@ public class WSForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-PrintStream oldOut = System.out;
-PrintStream printStream = new PrintStream(new OutputStream()
-{
-    // override write methods to write to the JTextArea / JTextPane
-});
-System.setOut(printStream);
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WSForm().setVisible(true);
             }
         });
-//        PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-         
-        // keeps reference of standard output stream
-       // standardOut = System.out;
-         
-        // re-assigns standard output stream and error output stream
-       // System.setOut(printStream);
-       // System.setErr(printStream);
+//        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -397,11 +396,11 @@ System.setOut(printStream);
     private javax.swing.JScrollPane jRefScrollPane;
     private javax.swing.JLabel jReferenceLabel;
     private javax.swing.JPanel jRxsPanel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jSelectLog;
     private javax.swing.JButton jStartb;
     private javax.swing.JLabel jStatusLabel;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
 }
