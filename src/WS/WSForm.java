@@ -1,8 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author shawn.harden
  */
+
 package WS;
 
 import java.awt.Color;
@@ -15,10 +15,7 @@ import java.util.Date;
 
 
 
-/**
- *
- * @author shawn.harden
- */
+
 public class WSForm extends javax.swing.JFrame {
 private PrintStream standardOut;
            
@@ -143,7 +140,9 @@ private PrintStream standardOut;
             }
         });
 
+        jTextArea.setBackground(new java.awt.Color(0, 0, 0));
         jTextArea.setColumns(20);
+        jTextArea.setForeground(new java.awt.Color(0, 255, 51));
         jTextArea.setRows(5);
         jScrollPane2.setViewportView(jTextArea);
 
@@ -299,7 +298,7 @@ private PrintStream standardOut;
         RefList.setEnabled(false); 
         printLog();
         try {
-           URI uri = new URI ("http://www.cnn.com");
+           URI uri = new URI ("http:");
             java.awt.Desktop.getDesktop().browse(uri);   
         }
         catch (IOException e) {
@@ -307,8 +306,8 @@ private PrintStream standardOut;
         }
         catch (URISyntaxException e){
         }
-        
-         jTextArea.setText("\nRequest for reference data sent...\n");
+       
+         jTextArea.setText("Request for reference data sent...\n");
     }//GEN-LAST:event_jStartbActionPerformed
 
     private void RefListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefListMouseClicked
@@ -344,6 +343,7 @@ private PrintStream standardOut;
  
 //Followings are The Methods that do the Redirect, you can simply Ignore them. 
   private void redirectSystemStreams() {
+      
     OutputStream out = new OutputStream() {
       @Override
       public void write(int b) throws IOException {
@@ -365,6 +365,7 @@ private PrintStream standardOut;
     System.setErr(new PrintStream(out, true));      
                  
                 while (true) {
+                    
                     System.out.println("Current Time is: " + (new Date()));
                     try {
                         Thread.sleep(1000);
