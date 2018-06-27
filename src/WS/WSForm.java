@@ -6,6 +6,11 @@
 package WS;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Date;
 
 /**
  *
@@ -46,7 +51,8 @@ public class WSForm extends javax.swing.JFrame {
         jStatusLabel = new javax.swing.JLabel();
         jSelectLog = new javax.swing.JButton();
         jClearStatusButton = new javax.swing.JButton();
-        scrollPane1 = new java.awt.ScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jRxsPanel = new javax.swing.JPanel();
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
@@ -126,54 +132,65 @@ public class WSForm extends javax.swing.JFrame {
         jSelectLog.setText("Select Log File");
 
         jClearStatusButton.setText("Clear Status Window");
+        jClearStatusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClearStatusButtonActionPerformed(evt);
+            }
+        });
 
-        scrollPane1.setBackground(new java.awt.Color(0, 0, 0));
-        scrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextPane1.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane1.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout jJpesPanelLayout = new javax.swing.GroupLayout(jJpesPanel);
         jJpesPanel.setLayout(jJpesPanelLayout);
         jJpesPanelLayout.setHorizontalGroup(
             jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jJpesPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jJpesPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jJpesPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jInitialButton)
-                                .addGap(33, 33, 33)
-                                .addComponent(jMaintenanceButton))
-                            .addComponent(jModeLable)
+                                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jInitialButton)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jMaintenanceButton))
+                                    .addComponent(jModeLable)
+                                    .addComponent(jReferenceLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jSelectLog)
+                                .addGap(75, 75, 75)
+                                .addComponent(jClearStatusButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+                                .addComponent(jExitButton))
                             .addGroup(jJpesPanelLayout.createSequentialGroup()
-                                .addComponent(jClearSelectb)
-                                .addGap(30, 30, 30)
-                                .addComponent(jStartb))
-                            .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jReferenceLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jSelectLog)
-                        .addGap(75, 75, 75)
-                        .addComponent(jClearStatusButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jExitButton)))
+                                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                        .addComponent(jClearSelectb)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jStartb))
+                                    .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jJpesPanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jStatusLabel)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jJpesPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jStatusLabel)
-                    .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
         );
         jJpesPanelLayout.setVerticalGroup(
             jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jJpesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPic)
                     .addGroup(jJpesPanelLayout.createSequentialGroup()
                         .addComponent(jModeLable)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,10 +206,11 @@ public class WSForm extends javax.swing.JFrame {
                             .addComponent(jClearSelectb)
                             .addComponent(jStartb))
                         .addGap(41, 41, 41)
-                        .addComponent(jStatusLabel)))
+                        .addComponent(jStatusLabel))
+                    .addComponent(jPic))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jExitButton)
                     .addComponent(jSelectLog)
@@ -206,11 +224,11 @@ public class WSForm extends javax.swing.JFrame {
         jRxsPanel.setLayout(jRxsPanelLayout);
         jRxsPanelLayout.setHorizontalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 703, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
         );
         jRxsPanelLayout.setVerticalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 563, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("RXS 2.0", jRxsPanel);
@@ -219,11 +237,11 @@ public class WSForm extends javax.swing.JFrame {
         jGfmdiPanel.setLayout(jGfmdiPanelLayout);
         jGfmdiPanelLayout.setHorizontalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 703, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
         );
         jGfmdiPanelLayout.setVerticalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 563, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("GFM-DI", jGfmdiPanel);
@@ -232,11 +250,11 @@ public class WSForm extends javax.swing.JFrame {
         jDmdcPanel.setLayout(jDmdcPanelLayout);
         jDmdcPanelLayout.setHorizontalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 703, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
         );
         jDmdcPanelLayout.setVerticalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 563, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("DMDC", jDmdcPanel);
@@ -248,7 +266,6 @@ public class WSForm extends javax.swing.JFrame {
 
     private void jInitialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInitialButtonActionPerformed
         RefList.setEnabled(false);
-       
         //RefList.setBackground(Color.WHITE);
         
         int start = 0;
@@ -274,6 +291,18 @@ public class WSForm extends javax.swing.JFrame {
 
     private void jStartbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartbActionPerformed
         RefList.setEnabled(false); 
+        printLog();
+        try {
+           URI uri = new URI ("http://www.cnn.com");
+            java.awt.Desktop.getDesktop().browse(uri);   
+        }
+        catch (IOException e) {
+            jTextPane1.setForeground(Color.red);
+        }
+        catch (URISyntaxException e){
+        }
+        
+         jTextPane1.setText("\nRequest for reference data sent...\n");
     }//GEN-LAST:event_jStartbActionPerformed
 
     private void RefListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefListMouseClicked
@@ -281,6 +310,27 @@ public class WSForm extends javax.swing.JFrame {
         RefList.setBackground(Color.GREEN);
     }//GEN-LAST:event_RefListMouseClicked
 
+    private void jClearStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearStatusButtonActionPerformed
+        // TODO add your handling code here:
+        jTextPane1.setText("");
+    }//GEN-LAST:event_jClearStatusButtonActionPerformed
+
+    
+     private void printLog() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    System.out.println("Time now is " + (new Date()));
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+       });
+        thread.start();      }
     /**
      * @param args the command line arguments
      */
@@ -315,6 +365,14 @@ public class WSForm extends javax.swing.JFrame {
                 new WSForm().setVisible(true);
             }
         });
+//        PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+         
+        // keeps reference of standard output stream
+       // standardOut = System.out;
+         
+        // re-assigns standard output stream and error output stream
+       // System.setOut(printStream);
+       // System.setErr(printStream);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -334,10 +392,11 @@ public class WSForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jRefScrollPane;
     private javax.swing.JLabel jReferenceLabel;
     private javax.swing.JPanel jRxsPanel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jSelectLog;
     private javax.swing.JButton jStartb;
     private javax.swing.JLabel jStatusLabel;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
