@@ -358,7 +358,12 @@ public class WSForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+PrintStream oldOut = System.out;
+PrintStream printStream = new PrintStream(new OutputStream()
+{
+    // override write methods to write to the JTextArea / JTextPane
+});
+System.setOut(printStream);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
