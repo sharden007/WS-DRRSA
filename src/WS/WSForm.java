@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.util.Date;
 
 
+
 /**
  *
  * @author shawn.harden
@@ -186,9 +187,9 @@ private PrintStream standardOut;
                         .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jJpesPanelLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jStatusLabel))
-                        .addGap(0, 130, Short.MAX_VALUE)))
+                        .addGap(0, 145, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jJpesPanelLayout.setVerticalGroup(
@@ -320,19 +321,51 @@ private PrintStream standardOut;
         jTextArea.setText("");
     }//GEN-LAST:event_jClearStatusButtonActionPerformed
 
-    
      private void printLog() {
          
         Thread thread = new Thread(new Runnable() {
           // private PrintStream standardOut;
-   
+    PrintStream printStream = standardOut;
+    
             @Override
             public void run() {
+                redirectSystemStreams();
+       
+            }
+ //The following codes set where the text get redirected. In this case, jTextArea1    
+  private void updateTextArea(final String text) {
+    java.awt.EventQueue.invokeLater(new Runnable() {
+      
+        public void run() {
+        jTextArea.append(text);
+      }
+    });
+  }
+ 
+//Followings are The Methods that do the Redirect, you can simply Ignore them. 
+  private void redirectSystemStreams() {
+    OutputStream out = new OutputStream() {
+      @Override
+      public void write(int b) throws IOException {
+        updateTextArea(String.valueOf((char) b));
+      }
+ 
+      @Override
+      public void write(byte[] b, int off, int len) throws IOException {
+        updateTextArea(new String(b, off, len));
+      }
+ 
+      @Override
+      public void write(byte[] b) throws IOException {
+        write(b, 0, b.length);
+      }
+    };
+ 
+    System.setOut(new PrintStream(out, true));
+    System.setErr(new PrintStream(out, true));      
+                 
                 while (true) {
-                    jTextArea.setText(standardOut);
-              //      System.setOut(printStream);
-              
-                    System.out.println("Time now is " + (new Date()));
+                    System.out.println("Current Time is: " + (new Date()));
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
