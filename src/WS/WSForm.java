@@ -14,8 +14,6 @@ import java.io.OutputStream;
 import java.util.Date;
 
 
-
-
 public class WSForm extends javax.swing.JFrame {
 private PrintStream standardOut;
            
@@ -124,6 +122,11 @@ private PrintStream standardOut;
         });
 
         jExitButton.setText("Close");
+        jExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jExitButtonActionPerformed(evt);
+            }
+        });
 
         jPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WS/SEC2.png"))); // NOI18N
         jPic.setText("jLabel1");
@@ -140,6 +143,7 @@ private PrintStream standardOut;
             }
         });
 
+        jTextArea.setEditable(false);
         jTextArea.setBackground(new java.awt.Color(0, 0, 0));
         jTextArea.setColumns(20);
         jTextArea.setForeground(new java.awt.Color(0, 255, 51));
@@ -213,7 +217,7 @@ private PrintStream standardOut;
                         .addGap(41, 41, 41)
                         .addComponent(jStatusLabel))
                     .addComponent(jPic))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -233,7 +237,7 @@ private PrintStream standardOut;
         );
         jRxsPanelLayout.setVerticalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("RXS 2.0", jRxsPanel);
@@ -246,7 +250,7 @@ private PrintStream standardOut;
         );
         jGfmdiPanelLayout.setVerticalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("GFM-DI", jGfmdiPanel);
@@ -259,7 +263,7 @@ private PrintStream standardOut;
         );
         jDmdcPanelLayout.setVerticalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("DMDC", jDmdcPanel);
@@ -298,7 +302,7 @@ private PrintStream standardOut;
         RefList.setEnabled(false); 
         printLog();
         try {
-           URI uri = new URI ("http:");
+           URI uri = new URI ("http:www.cnn.com");
             java.awt.Desktop.getDesktop().browse(uri);   
         }
         catch (IOException e) {
@@ -319,6 +323,11 @@ private PrintStream standardOut;
         // TODO add your handling code here:
         jTextArea.setText("");
     }//GEN-LAST:event_jClearStatusButtonActionPerformed
+
+    private void jExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitButtonActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jExitButtonActionPerformed
 
      private void printLog() {
          
