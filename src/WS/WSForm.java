@@ -53,6 +53,7 @@ private PrintStream standardOut;
         jClearStatusButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jRxsPanel = new javax.swing.JPanel();
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
@@ -150,6 +151,8 @@ private PrintStream standardOut;
         jTextArea.setRows(5);
         jScrollPane2.setViewportView(jTextArea);
 
+        jProgressBar1.setStringPainted(true);
+
         javax.swing.GroupLayout jJpesPanelLayout = new javax.swing.GroupLayout(jJpesPanel);
         jJpesPanel.setLayout(jJpesPanelLayout);
         jJpesPanelLayout.setHorizontalGroup(
@@ -183,7 +186,10 @@ private PrintStream standardOut;
                                         .addComponent(jClearSelectb)
                                         .addGap(30, 30, 30)
                                         .addComponent(jStartb))
-                                    .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                        .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jJpesPanelLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -192,7 +198,7 @@ private PrintStream standardOut;
                                 .addGap(10, 10, 10)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jStatusLabel))
-                        .addGap(0, 145, Short.MAX_VALUE)))
+                        .addGap(0, 143, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jJpesPanelLayout.setVerticalGroup(
@@ -208,14 +214,19 @@ private PrintStream standardOut;
                             .addComponent(jMaintenanceButton))
                         .addGap(31, 31, 31)
                         .addComponent(jReferenceLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jClearSelectb)
-                            .addComponent(jStartb))
-                        .addGap(41, 41, 41)
-                        .addComponent(jStatusLabel))
+                        .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRefScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jClearSelectb)
+                                    .addComponent(jStartb))
+                                .addGap(41, 41, 41)
+                                .addComponent(jStatusLabel))
+                            .addGroup(jJpesPanelLayout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPic))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,7 +429,8 @@ private PrintStream standardOut;
             public void run() {
                 new WSForm().setVisible(true);
             }
-        });
+        }
+        );
 //        
     }
 
@@ -436,6 +448,7 @@ private PrintStream standardOut;
     private javax.swing.JRadioButton jMaintenanceButton;
     private javax.swing.JLabel jModeLable;
     private javax.swing.JLabel jPic;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jRefScrollPane;
     private javax.swing.JLabel jReferenceLabel;
     private javax.swing.JPanel jRxsPanel;

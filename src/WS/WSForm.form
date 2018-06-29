@@ -93,12 +93,16 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Component id="jClearSelectb" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                               <Component id="jStartb" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jRefScrollPane" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jRefScrollPane" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="jProgressBar1" min="-2" pref="220" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -113,7 +117,7 @@
                                   </Group>
                                   <Component id="jStatusLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="145" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="143" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -134,15 +138,23 @@
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jReferenceLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRefScrollPane" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jClearSelectb" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jStartb" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jRefScrollPane" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jClearSelectb" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jStartb" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="jStatusLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                      <Component id="jProgressBar1" min="-2" pref="39" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="jStatusLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPic" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -321,6 +333,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+              <Properties>
+                <Property name="stringPainted" type="boolean" value="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jRxsPanel">
