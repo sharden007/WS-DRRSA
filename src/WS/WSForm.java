@@ -14,8 +14,6 @@ import java.io.OutputStream;
 import java.util.Date;
 
 
-
-
 public class WSForm extends javax.swing.JFrame {
 private PrintStream standardOut;
            
@@ -55,6 +53,7 @@ private PrintStream standardOut;
         jClearStatusButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
+        jSchedulledButton = new javax.swing.JRadioButton();
         jRxsPanel = new javax.swing.JPanel();
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
@@ -123,7 +122,12 @@ private PrintStream standardOut;
             }
         });
 
-        jExitButton.setText("Close");
+        jExitButton.setText("Exit");
+        jExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jExitButtonActionPerformed(evt);
+            }
+        });
 
         jPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WS/SEC2.png"))); // NOI18N
         jPic.setText("jLabel1");
@@ -146,6 +150,9 @@ private PrintStream standardOut;
         jTextArea.setRows(5);
         jScrollPane2.setViewportView(jTextArea);
 
+        jSchedulledButton.setText("Schedulled");
+        jSchedulledButton.setToolTipText("This selection starts pullling across specific \nreference data at a pre-determined rate.");
+
         javax.swing.GroupLayout jJpesPanelLayout = new javax.swing.GroupLayout(jJpesPanel);
         jJpesPanel.setLayout(jJpesPanelLayout);
         jJpesPanelLayout.setHorizontalGroup(
@@ -161,10 +168,12 @@ private PrintStream standardOut;
                                         .addGap(10, 10, 10)
                                         .addComponent(jInitialButton)
                                         .addGap(33, 33, 33)
-                                        .addComponent(jMaintenanceButton))
+                                        .addComponent(jMaintenanceButton)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(jSchedulledButton))
                                     .addComponent(jModeLable)
                                     .addComponent(jReferenceLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                                 .addComponent(jPic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
@@ -201,7 +210,8 @@ private PrintStream standardOut;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jInitialButton)
-                            .addComponent(jMaintenanceButton))
+                            .addComponent(jMaintenanceButton)
+                            .addComponent(jSchedulledButton))
                         .addGap(31, 31, 31)
                         .addComponent(jReferenceLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,7 +243,7 @@ private PrintStream standardOut;
         );
         jRxsPanelLayout.setVerticalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("RXS 2.0", jRxsPanel);
@@ -246,7 +256,7 @@ private PrintStream standardOut;
         );
         jGfmdiPanelLayout.setVerticalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("GFM-DI", jGfmdiPanel);
@@ -259,7 +269,7 @@ private PrintStream standardOut;
         );
         jDmdcPanelLayout.setVerticalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("DMDC", jDmdcPanel);
@@ -319,6 +329,12 @@ private PrintStream standardOut;
         // TODO add your handling code here:
         jTextArea.setText("");
     }//GEN-LAST:event_jClearStatusButtonActionPerformed
+
+    private void jExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitButtonActionPerformed
+        // TODO add your handling code here:
+        //System.exit(0);
+        this.dispose();
+    }//GEN-LAST:event_jExitButtonActionPerformed
 
      private void printLog() {
          
@@ -430,6 +446,7 @@ private PrintStream standardOut;
     private javax.swing.JScrollPane jRefScrollPane;
     private javax.swing.JLabel jReferenceLabel;
     private javax.swing.JPanel jRxsPanel;
+    private javax.swing.JRadioButton jSchedulledButton;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jSelectLog;
     private javax.swing.JButton jStartb;
