@@ -277,6 +277,7 @@ private PrintStream standardOut;
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jInitialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInitialButtonActionPerformed
@@ -297,7 +298,8 @@ private PrintStream standardOut;
     }//GEN-LAST:event_jMaintenanceButtonActionPerformed
 
     private void jClearSelectbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearSelectbActionPerformed
-      RefList.clearSelection();
+        RefList.setBackground(Color.WHITE);
+        RefList.clearSelection();
       
        //jMaintenanceButton.setSelected(false); not working???
       //jInitialButton.setSelected(false); not working???
@@ -327,6 +329,7 @@ private PrintStream standardOut;
 
     private void jClearStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearStatusButtonActionPerformed
         // TODO add your handling code here:
+   
         jTextArea.setText("");
     }//GEN-LAST:event_jClearStatusButtonActionPerformed
 
@@ -392,10 +395,26 @@ private PrintStream standardOut;
             }
        });
         thread.start();      }
+     
+     
+          private static void sleepThread() {
+            try
+                {
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException ex)
+                {
+                    // Do something, if there is a exception
+                    System.out.println(ex.toString());
+                }
+        }
+          
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+       
+        sleepThread();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
