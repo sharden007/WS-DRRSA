@@ -387,7 +387,7 @@ private PrintStream standardOut;
                     
                     System.out.println("Current Time is: " + (new Date()));
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }
