@@ -22,7 +22,6 @@ private PrintStream standardOut;
      */
     public WSForm() {
         initComponents();
-        
     }
 
     /**
@@ -53,7 +52,7 @@ private PrintStream standardOut;
         jClearStatusButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        jSchedulledButton = new javax.swing.JRadioButton();
         jRxsPanel = new javax.swing.JPanel();
         jGfmdiPanel = new javax.swing.JPanel();
         jDmdcPanel = new javax.swing.JPanel();
@@ -122,7 +121,7 @@ private PrintStream standardOut;
             }
         });
 
-        jExitButton.setText("Close");
+        jExitButton.setText("Exit");
         jExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jExitButtonActionPerformed(evt);
@@ -153,6 +152,9 @@ private PrintStream standardOut;
 
         jProgressBar1.setStringPainted(true);
 
+        jSchedulledButton.setText("Schedulled");
+        jSchedulledButton.setToolTipText("This selection starts pullling across specific \nreference data at a pre-determined rate.");
+
         javax.swing.GroupLayout jJpesPanelLayout = new javax.swing.GroupLayout(jJpesPanel);
         jJpesPanel.setLayout(jJpesPanelLayout);
         jJpesPanelLayout.setHorizontalGroup(
@@ -168,10 +170,12 @@ private PrintStream standardOut;
                                         .addGap(10, 10, 10)
                                         .addComponent(jInitialButton)
                                         .addGap(33, 33, 33)
-                                        .addComponent(jMaintenanceButton))
+                                        .addComponent(jMaintenanceButton)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(jSchedulledButton))
                                     .addComponent(jModeLable)
                                     .addComponent(jReferenceLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                                 .addComponent(jPic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jJpesPanelLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
@@ -211,7 +215,8 @@ private PrintStream standardOut;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jInitialButton)
-                            .addComponent(jMaintenanceButton))
+                            .addComponent(jMaintenanceButton)
+                            .addComponent(jSchedulledButton))
                         .addGap(31, 31, 31)
                         .addComponent(jReferenceLabel)
                         .addGroup(jJpesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +253,7 @@ private PrintStream standardOut;
         );
         jRxsPanelLayout.setVerticalGroup(
             jRxsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("RXS 2.0", jRxsPanel);
@@ -261,7 +266,7 @@ private PrintStream standardOut;
         );
         jGfmdiPanelLayout.setVerticalGroup(
             jGfmdiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("GFM-DI", jGfmdiPanel);
@@ -274,7 +279,7 @@ private PrintStream standardOut;
         );
         jDmdcPanelLayout.setVerticalGroup(
             jDmdcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("DMDC", jDmdcPanel);
@@ -282,6 +287,7 @@ private PrintStream standardOut;
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jInitialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInitialButtonActionPerformed
@@ -302,7 +308,8 @@ private PrintStream standardOut;
     }//GEN-LAST:event_jMaintenanceButtonActionPerformed
 
     private void jClearSelectbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearSelectbActionPerformed
-      RefList.clearSelection();
+        RefList.setBackground(Color.WHITE);
+        RefList.clearSelection();
       
        //jMaintenanceButton.setSelected(false); not working???
       //jInitialButton.setSelected(false); not working???
@@ -332,12 +339,14 @@ private PrintStream standardOut;
 
     private void jClearStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearStatusButtonActionPerformed
         // TODO add your handling code here:
+   
         jTextArea.setText("");
     }//GEN-LAST:event_jClearStatusButtonActionPerformed
 
     private void jExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitButtonActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        //System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_jExitButtonActionPerformed
 
      private void printLog() {
@@ -388,7 +397,7 @@ private PrintStream standardOut;
                     
                     System.out.println("Current Time is: " + (new Date()));
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }
@@ -396,10 +405,26 @@ private PrintStream standardOut;
             }
        });
         thread.start();      }
+     
+     
+          private static void sleepThread() {
+            try
+                {
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException ex)
+                {
+                    // Do something, if there is a exception
+                    System.out.println(ex.toString());
+                }
+        }
+          
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+       
+        sleepThread();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -452,6 +477,7 @@ private PrintStream standardOut;
     private javax.swing.JScrollPane jRefScrollPane;
     private javax.swing.JLabel jReferenceLabel;
     private javax.swing.JPanel jRxsPanel;
+    private javax.swing.JRadioButton jSchedulledButton;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jSelectLog;
     private javax.swing.JButton jStartb;
